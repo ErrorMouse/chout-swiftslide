@@ -1,0 +1,110 @@
+/* =====================================================
+   Chout - SwiftSlide: Three Columns Slide Out
+   Widget class: .chout-tcso
+   ID per instance & CSS vars set inline by the widget PHP
+   ===================================================== */
+
+/* Main container */
+.chout-tcso {
+    position: relative;
+    width: 100%;
+    height: auto;
+    /* max-width & aspect-ratio được set inline */
+}
+
+/* Each slide (one image) */
+.chout-tcso .image-slide {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: var(--tcso-gap, 2px);
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+/* Slide that is leaving */
+.chout-tcso .image-slide.prev {
+    display: flex;
+    z-index: 1;
+}
+
+/* Slide currently displayed */
+.chout-tcso .image-slide.active {
+    display: flex;
+    z-index: 2;
+}
+
+/* Layout & img fill the column */
+.chout-tcso .layout,
+.chout-tcso img {
+    position: absolute;
+    inset: 0;
+}
+
+/* Each slide-out column — handles the clip-path slide animation only */
+.chout-tcso .slide-out {
+    position: relative;
+    width: calc((100% - 2 * var(--tcso-gap, 2px)) / 3);
+    height: 100%;
+    overflow: hidden;
+    border-radius: var(--tcso-border-radius, 0px);
+    pointer-events: none;
+    contain: layout paint;
+    will-change: clip-path;
+    clip-path: inset(0% 0% 100% 0%);
+}
+
+.chout-tcso .image-slide:not(.active) .slide-out {
+    border-radius: calc(var(--tcso-border-radius, 0px) + 2px);
+    transition: border-radius calc(var(--tcso-anim-duration, 1s) + 1s) ease-in-out;
+}
+
+/* Play animation only when the slide is active */
+.chout-tcso .active .slide-out {
+    animation: choutTCSOslideIn var(--tcso-anim-duration, 1s) cubic-bezier(0.53, 0.93, 0.79, 1) forwards;
+}
+
+/* Keep the previous slide fully visible without needing the animation state */
+.chout-tcso .prev .slide-out {
+    clip-path: inset(0% 0% 0% 0%);
+}
+
+/* Staggered delay for the 3 columns */
+.chout-tcso .slide-out:nth-child(1) { animation-delay: 0.2s; }
+.chout-tcso .slide-out:nth-child(2) { animation-delay: 0.4s; }
+.chout-tcso .slide-out:nth-child(3) { animation-delay: 0.6s; }
+
+/* Layout: full-widget-width image container
+   width = 3 × col_width + 2 × gap = calc(300% + 2 * gap) */
+.chout-tcso .layout {
+    width: calc(300% + 2 * var(--tcso-gap, 2px));
+    overflow: hidden;
+}
+
+/* Offset each column so the correct image portion is visible:
+   col2 left = -(col_width + gap) = calc(-100% - gap)
+   col3 left = -(2×col_width + 2×gap) = calc(-200% - 2×gap) */
+.chout-tcso .slide-out:nth-child(1) .layout { left: 0; }
+.chout-tcso .slide-out:nth-child(2) .layout { left: calc(-100% - var(--tcso-gap, 2px)); }
+.chout-tcso .slide-out:nth-child(3) .layout { left: calc(-200% - 2 * var(--tcso-gap, 2px)); }
+
+/* Image */
+.chout-tcso img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+    backface-visibility: hidden;
+    display: block;
+}
+
+/* Keyframe: slide up from bottom */
+@keyframes choutTCSOslideIn {
+    from { clip-path: inset(0% 0% 100% 0%); }
+    to   { clip-path: inset(0% 0% 0%   0%); }
+}

@@ -1,0 +1,34 @@
+/*
+ * Chout - SwiftSlide: Custom Widget Icons
+ *
+ * Elementor reads `get_icon()` as a CSS class applied to an <i> element.
+ * We use `mask-image` with the SVG so the icon inherits Elementor's
+ * active/hover color automatically (same technique Elementor uses internally).
+ */
+
+/* ── Shared base for all Chout icons ─────────────────────────── */
+i.chout-icon-fec,
+i.chout-icon-tcso {
+    display: inline-block;
+    width:  1em;
+    height: 1em;
+    background-color: currentColor; /* inherits Elementor's icon color */
+    -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+            mask-position: center;
+    -webkit-mask-size: contain;
+            mask-size: contain;
+}
+
+/* ── Five Elastic Columns icon ────────────────────────────────── */
+i.chout-icon-fec {
+    -webkit-mask-image: url('../icons/fec-icon.svg');
+            mask-image: url('../icons/fec-icon.svg');
+}
+
+/* ── Three Columns Slide Out icon ─────────────────────────────── */
+i.chout-icon-tcso {
+    -webkit-mask-image: url('../icons/tcso-icon.svg');
+            mask-image: url('../icons/tcso-icon.svg');
+}

@@ -1,0 +1,102 @@
+/* =====================================================
+   Chout - SwiftSlide: Five Elastic Columns
+   Widget class: .chout-fec
+   ID per instance is set inline by the widget PHP
+   ===================================================== */
+
+.chout-fec {
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 4px;
+    width: 100%;
+    height: auto;
+    /* Container: max-width & aspect-ratio set inline by the widget */
+}
+
+/* Absolute elements inside each column */
+.chout-fec .layout-2,
+.chout-fec .layout-3,
+.chout-fec .fiec-boder,
+.chout-fec img {
+    position: absolute;
+    inset: 0;
+}
+
+/* Each column takes 1/5 of the widget width */
+.chout-fec .layout-1 {
+    position: relative;
+    width: calc(20% - 2px);
+    height: 100%;
+    overflow: visible;
+    /* Odd columns: clip 7.5% top and bottom */
+    --fice-clip-shape: inset(7.5% 0% round var(--fice-border-radius, 8px));
+    --fice-border-height: 85%;
+}
+
+/* Even columns: full height */
+.chout-fec .layout-1:nth-child(even) {
+    --fice-clip-shape: inset(0% 0% round var(--fice-border-radius, 8px));
+    --fice-border-height: 100%;
+}
+
+/* ---- Hover: reverse the effect ---- */
+.chout-fec:hover .layout-1 {
+    --fice-clip-shape: inset(0% 0% round var(--fice-border-radius, 8px));
+    --fice-border-height: 100%;
+}
+
+.chout-fec:hover .layout-1:nth-child(even) {
+    --fice-clip-shape: inset(7.5% 0% round var(--fice-border-radius, 8px));
+    --fice-border-height: 85%;
+}
+
+/* Clip & transition for layout-2 */
+.chout-fec .layout-2 {
+    overflow: hidden;
+    will-change: clip-path;
+    contain: layout paint;
+    border-radius: var(--fice-border-radius, 8px);
+    transition: var(--fice-transition, 0.5s) cubic-bezier(0.39, 0.9, 0.87, 0.87);
+    clip-path: var(--fice-clip-shape);
+}
+
+/* Thin border showing the clipped area */
+.chout-fec .fiec-boder {
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--fice-border-radius, 8px);
+    pointer-events: none;
+    transition: var(--fice-transition, 0.5s) cubic-bezier(0.39, 0.9, 0.87, 0.87);
+    height: var(--fice-border-height);
+}
+
+/* layout-3: full-widget-width image container */
+.chout-fec .layout-3 {
+    pointer-events: none;
+    width: calc(500% + 16px);
+    height: 100%;
+    top: 0;
+}
+
+/* Offset each column to show the correct portion of the image */
+.chout-fec .layout-1:nth-child(1) .layout-3 { left: 0%; }
+.chout-fec .layout-1:nth-child(2) .layout-3 { left: -100%; }
+.chout-fec .layout-1:nth-child(3) .layout-3 { left: calc(-200% - 4px); }
+.chout-fec .layout-1:nth-child(4) .layout-3 { left: calc(-300% - 8px); }
+.chout-fec .layout-1:nth-child(5) .layout-3 { left: calc(-400% - 12px); }
+
+/* Image fills the container */
+.chout-fec img {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+    backface-visibility: hidden;
+    display: block;
+}
