@@ -62,13 +62,6 @@ No limit. All slideshow widgets in this plugin use an Elementor Repeater, allowi
 = Will the widgets slow down my site? =
 No. CSS files are registered and enqueued only on pages where the widgets are used. The slideshow JavaScript is similarly loaded on demand and has no external dependencies.
 
-== Screenshots ==
-
-1. Five Elastic Columns — default state (odd columns clipped)
-2. Five Elastic Columns — hover state (columns expand)
-3. Three Columns Slide Out — slide-up reveal animation
-4. Widget controls in the Elementor panel
-
 == Changelog ==
 
 = 1.0.0 =
