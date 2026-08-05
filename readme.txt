@@ -4,7 +4,7 @@ Tags:              elementor, image, slider, animation, effect
 Requires at least: 5.2
 Tested up to:      7.0
 Requires PHP:      7.4
-Stable tag:        1.0.0
+Stable tag:        1.0.1
 Requires Elementor (free) at least: 4.2.1
 License:           GPLv2 or later
 License URI:       https://www.gnu.org/licenses/gpl-2.0.html
@@ -64,12 +64,18 @@ No. CSS files are registered and enqueued only on pages where the widgets are us
 
 == Changelog ==
 
+= 1.0.1 =
+* Tweak: Improved compatibility with Autoptimize's CSS code optimization feature.
+
 = 1.0.0 =
 * Initial release
 * Five Elastic Columns widget
 * Three Columns Slide Out widget
 
 == Upgrade Notice ==
+
+= 1.0.1 =
+* Tweak: Improved compatibility with Autoptimize's CSS code optimization feature.
 
 = 1.0.0 =
 Initial release — no upgrade steps required.

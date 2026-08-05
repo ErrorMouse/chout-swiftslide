@@ -202,6 +202,11 @@ class Chout_Widget_Three_Columns_Slide_Out extends \Elementor\Widget_Base {
                 --tcso-border-radius: <?php echo $border_radius; ?>px;
                 --tcso-gap: <?php echo $gap; ?>px;
             }
+            /* Layout padding and offset injected directly to avoid Autoptimize var() bugs */
+            #<?php echo $uid; ?> .layout { padding-right: <?php echo $gap * 2; ?>px; }
+            #<?php echo $uid; ?> .slide-out:nth-child(1) .layout { left: 0; }
+            #<?php echo $uid; ?> .slide-out:nth-child(2) .layout { left: -100%; margin-left: -<?php echo $gap; ?>px; }
+            #<?php echo $uid; ?> .slide-out:nth-child(3) .layout { left: -200%; margin-left: -<?php echo $gap * 2; ?>px; }
         </style>
 
         <div id="<?php echo $uid; ?>"
@@ -253,6 +258,10 @@ class Chout_Widget_Three_Columns_Slide_Out extends \Elementor\Widget_Base {
                 --tcso-border-radius: {{ radius }}px;
                 --tcso-gap: {{ gap }}px;
             }
+            #{{ uid }} .layout { padding-right: {{ gap * 2 }}px; }
+            #{{ uid }} .slide-out:nth-child(1) .layout { left: 0; }
+            #{{ uid }} .slide-out:nth-child(2) .layout { left: -100%; margin-left: -{{ gap }}px; }
+            #{{ uid }} .slide-out:nth-child(3) .layout { left: -200%; margin-left: -{{ gap * 2 }}px; }
         </style>
         <div id="{{ uid }}" class="chout-tcso" data-slide-duration="{{ slideD }}">
             <# _.each( images, function( item, idx ) {

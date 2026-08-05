@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Chout - SwiftSlide
  * Description:       Elementor widgets: Five Elastic Columns & Three Columns Slide Out. Select images, set width, height and transition duration.
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.2
  * Requires PHP:      7.4
  * Author:            Chout
@@ -76,7 +76,7 @@ add_filter( 'plugin_row_meta', function( $links, $file ) use ( $chout_sslide_upd
 }, 10, 2 );
 // --- End Update Checker ---
 
-define( 'CHOUT_SWIFTSLIDE_VERSION', '1.0.0' );
+define( 'CHOUT_SWIFTSLIDE_VERSION', '1.0.1' );
 define( 'CHOUT_SWIFTSLIDE_PATH',    plugin_dir_path( __FILE__ ) );
 define( 'CHOUT_SWIFTSLIDE_URL',     plugin_dir_url( __FILE__ ) );
 
