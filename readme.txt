@@ -75,7 +75,7 @@ No. CSS files are registered and enqueued only on pages where the widgets are us
 == Upgrade Notice ==
 
 = 1.0.1 =
-* Tweak: Improved compatibility with Autoptimize's CSS code optimization feature.
+Improved compatibility with Autoptimize's CSS code optimization feature.
 
 = 1.0.0 =
-Initial release — no upgrade steps required.
+Initial release.
